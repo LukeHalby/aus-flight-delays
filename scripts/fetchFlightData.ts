@@ -1,7 +1,7 @@
 import fs from "fs"
-import { AIRLINE_IATAS, AIRPORT_IATAS, API_KEY, DAY_MILLISECONDS, FILE_NAME, FILE_PATH, START_DATE_MILLISECONDS } from "./globals"
-import { tFlightData, tFlightDataRequest } from "./types"
-import { GetFlightData } from "./request"
+import { AIRLINE_IATAS, AIRPORT_IATAS, API_KEY, DAY_MILLISECONDS, FILE_NAME, FILE_PATH, START_DATE_MILLISECONDS } from "../utils/globals"
+import { tFlightData, tFlightDataRequest } from "../utils/types"
+import { GetFlightData } from "../utils/request"
 
 const checkFileExists = async (s: string) => {return new Promise(r=>fs.access(s, fs.constants.F_OK, e => r(!e)))}
 
