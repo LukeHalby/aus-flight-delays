@@ -17,7 +17,7 @@ export type tAviationStackResponse<T> = {
   data: T[]
 }
 
-export type tFlightData = {
+export type tAviationStackFlightData = {
   flight_status: tFlightStatus,
   flight_date: string,
   departure: {
@@ -85,7 +85,7 @@ export type tFlightData = {
   } | null
 }
 
-export type tFlightDataRequest = {
+export type tAviationStackFlightDataRequest = {
   access_key: string,
   callback?: string,
   limit: string,
@@ -108,4 +108,36 @@ export type tFlightDataRequest = {
   max_delay_arr?: string,
   arr_scheduled_time_arr?: string,
   arr_scheduled_time_dep?: string,
+}
+
+export type tFlightData = {
+  airline: string,
+  flightNumber: string,
+  depAirport: string,
+  depDate: string,
+  depHour: string,
+  depDelay: number,
+  arrAirport: string,
+  arrDate: string,
+  arrHour: string,
+  arrDelay: number
+}
+
+export type tAirportWeatherData = {
+  [time: string]: {
+    temperature_2m: number,
+    precipitation: number,
+    weather_code: number,
+    cloud_cover_low: number,
+    cloud_cover_mid: number,
+    cloud_cover_high: number,
+    wind_speed_10m: number,
+    wind_speed_100m: number,
+    wind_direction_10m: number,
+    wind_direction_100m: number,
+  }
+}
+
+export type tWeatherData = {
+  [airport: string]: tAirportWeatherData
 }
