@@ -1,6 +1,6 @@
 import fs from "fs"
 import { AIRLINE_IATAS, AIRPORT_IATAS, API_KEY, DAY_MILLISECONDS, FILE_NAME, FILE_PATH, START_DATE_MILLISECONDS } from "../utils/globals"
-import { tFlightData, tFlightDataRequest } from "../utils/types"
+import { tAviationStackFlightData, tAviationStackFlightDataRequest } from "../utils/types"
 import { GetFlightData } from "../utils/request"
 
 const checkFileExists = async (s: string) => {return new Promise(r=>fs.access(s, fs.constants.F_OK, e => r(!e)))}
@@ -17,12 +17,12 @@ const checkFileExists = async (s: string) => {return new Promise(r=>fs.access(s,
       continue
     }
 
-    let data: tFlightData[] = []
+    let data: tAviationStackFlightData[] = []
     for (const depAirport of AIRPORT_IATAS) {
       for (const airline of AIRLINE_IATAS) {
         console.log(dateString, depAirport, airline)
         try {
-          const params: tFlightDataRequest = {
+          const params: tAviationStackFlightDataRequest = {
             access_key: API_KEY || '',
             limit: "100",
             flight_date: dateString,
